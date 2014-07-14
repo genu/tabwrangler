@@ -65,6 +65,7 @@ Popup.optionsTab.init = function(context) {
   $('#maxTabs').keyup(_.debounce(onBlurInput, 200));
   $('#purgeClosedTabs').change(onChangeCheckBox);
   $('#showBadgeCount').change(onChangeCheckBox);
+  $('#adaptiveInterval').change(onChangeCheckBox);
 
   Popup.optionsTab.loadOptions();
 };
@@ -110,8 +111,10 @@ Popup.optionsTab.loadOptions = function () {
   if (settings.get('showBadgeCount') !== false) {
     $('#showBadgeCount').attr('checked', true);
   }
+  if(settings.get('adaptiveInterval') !== false) {
+	  $('#adaptiveInterval').attr('checked', true);
+  }
   
-
   $('#whitelist').addOption = function(key, val) {
       this.append(
       $('<option />')
